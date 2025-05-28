@@ -1,0 +1,22 @@
+# Répertoires lourds
+node_modules
+*.log
+*.zip
+*.rar
+*.7z
+**/__tests__/
+**/__mocks__/
+clean/
+.idea/
+.vscode/
+
+# Build et output
+dist/
+build/
+web-build/
+
+# Images et médias lourds si inutiles
+*.mp4
+*.mov
+*.psd
+*.ai

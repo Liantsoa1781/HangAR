@@ -1,0 +1,21 @@
+'Log files:
+e:\HANGAR\HANGAR\HangAR\clean\_logs\2025-05-27T22_19_41_270Z-debug-0.log
+
+# npm resolution error report
+
+While resolving: hangar@1.0.0
+Found: react@18.2.0
+node_modules/react
+  react@"18.2.0" from the root project
+
+Could not resolve dependency:
+peer react@"^19.0.0" from react-native@0.79.2
+node_modules/react-native
+  react-native@"0.79.2" from the root project
+  peer react-native@"^0.0.0-0 || >=0.60 <1.0" from @react-native-async-storage/async-storage@1.24.0
+  node_modules/@react-native-async-storage/async-storage
+    @react-native-async-storage/async-storage@"^1.22.0" from the root project
+
+Fix the upstream dependency conflict, or retry
+this command with --force or --legacy-peer-deps
+to accept an incorrect (and potentially broken) dependency resolution.

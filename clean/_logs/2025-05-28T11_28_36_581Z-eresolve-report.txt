@@ -1,0 +1,73 @@
+'Log files:
+e:\HANGAR\HANGAR\HangAR\clean\_logs\2025-05-28T11_28_36_581Z-debug-0.log
+
+# npm resolution error report
+
+While resolving: @react-native-community/datetimepicker@8.3.0
+Found: expo@48.0.21
+node_modules/expo
+  peer expo@"*" from expo-application@5.5.0
+  node_modules/expo-application
+    expo-application@"~5.5.0" from expo-notifications@0.24.2
+    node_modules/expo-notifications
+      expo-notifications@"^0.24.0" from the root project
+  peer expo@"*" from expo-constants@14.3.0
+  node_modules/expo-asset/node_modules/expo-constants
+    expo-constants@"~14.3.0" from expo-asset@8.9.2
+    node_modules/expo-asset
+      expo-asset@"~8.9.1" from expo@48.0.21
+  peer expo@"*" from expo-file-system@15.3.0
+  node_modules/expo-asset/node_modules/expo-file-system
+    expo-file-system@"~15.3.0" from expo-asset@8.9.2
+    node_modules/expo-asset
+      expo-asset@"~8.9.1" from expo@48.0.21
+  peer expo@"*" from expo-constants@14.2.1
+  node_modules/expo-constants
+    expo-constants@"~14.2.1" from expo@48.0.21
+  peer expo@"*" from expo-file-system@15.2.2
+  node_modules/expo-file-system
+    expo-file-system@"~15.2.2" from expo@48.0.21
+  peer expo@"*" from expo-font@13.3.1
+  node_modules/expo-font
+    peer expo-font@"*" from @expo/vector-icons@14.1.0
+    node_modules/@expo/vector-icons
+      @expo/vector-icons@"^14.1.0" from the root project
+  peer expo@"*" from expo-keep-awake@12.0.1
+  node_modules/expo-keep-awake
+    expo-keep-awake@"~12.0.1" from expo@48.0.21
+  peer expo@"*" from expo-localization@16.1.5
+  node_modules/expo-localization
+    expo-localization@"^16.1.5" from the root project
+  peer expo@"*" from expo-notifications@0.24.2
+  node_modules/expo-notifications
+    expo-notifications@"^0.24.0" from the root project
+  peer expo@"*" from expo-constants@15.1.0
+  node_modules/expo-notifications/node_modules/expo-constants
+    expo-constants@"~15.1.0" from expo-notifications@0.24.2
+    node_modules/expo-notifications
+      expo-notifications@"^0.24.0" from the root project
+  peer expo@"*" from expo-application@5.1.1
+  node_modules/expo/node_modules/expo-application
+    expo-application@"~5.1.1" from expo@48.0.21
+  peer expo@"*" from expo-font@11.1.1
+  node_modules/expo/node_modules/expo-font
+    expo-font@"~11.1.1" from expo@48.0.21
+  expo@"^48.0.0" from the root project
+  peerOptional expo@">=47.0.0" from @react-native-firebase/app@17.5.0
+  node_modules/@react-native-firebase/app
+    @react-native-firebase/app@"^17.3.0" from the root project
+
+Could not resolve dependency:
+peerOptional expo@">=50.0.0" from @react-native-community/datetimepicker@8.3.0
+node_modules/@react-native-community/datetimepicker
+  @react-native-community/datetimepicker@"8.3.0" from the root project
+
+Conflicting peer dependency: expo@53.0.9
+node_modules/expo
+  peerOptional expo@">=50.0.0" from @react-native-community/datetimepicker@8.3.0
+  node_modules/@react-native-community/datetimepicker
+    @react-native-community/datetimepicker@"8.3.0" from the root project
+
+Fix the upstream dependency conflict, or retry
+this command with --force or --legacy-peer-deps
+to accept an incorrect (and potentially broken) dependency resolution.

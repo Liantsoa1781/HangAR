@@ -1,0 +1,59 @@
+'Log files:
+E:\HANGAR\HANGAR\HangAR\clean\_logs\2025-05-08T21_42_48_998Z-debug-0.log
+
+# npm resolution error report
+
+While resolving: hangar@1.0.0
+Found: @react-native-community/datetimepicker@8.2.0
+node_modules/@react-native-community/datetimepicker
+  @react-native-community/datetimepicker@"8.3.0" from the root project
+
+Could not resolve dependency:
+@react-native-community/datetimepicker@"8.3.0" from the root project
+
+Conflicting peer dependency: react@19.0.0
+node_modules/react
+  peer react@"^19.0.0" from react-native@0.79.2
+  node_modules/react-native
+    react-native@"0.79.2" from the root project
+    peer react-native@"*" from @react-native-community/datetimepicker@8.3.0
+    node_modules/@react-native-community/datetimepicker
+      @react-native-community/datetimepicker@"8.3.0" from the root project
+    peer react-native@"*" from expo@52.0.46
+    node_modules/expo
+      expo@"~52.0.38" from the root project
+      peerOptional expo@">=50.0.0" from @react-native-community/datetimepicker@8.3.0
+      node_modules/@react-native-community/datetimepicker
+        @react-native-community/datetimepicker@"8.3.0" from the root project
+      peer expo@"*" from @expo/dom-webview@0.1.4
+      node_modules/@expo/dom-webview
+        peerOptional @expo/dom-webview@"*" from expo@52.0.46
+    peer react-native@"*" from @expo/dom-webview@0.1.4
+    node_modules/@expo/dom-webview
+      peerOptional @expo/dom-webview@"*" from expo@52.0.46
+    peer react-native@"*" from @expo/metro-runtime@5.0.4
+    node_modules/@expo/metro-runtime
+      peerOptional @expo/metro-runtime@"*" from expo@52.0.46
+      node_modules/expo
+        expo@"~52.0.38" from the root project
+        peerOptional expo@">=50.0.0" from @react-native-community/datetimepicker@8.3.0
+        node_modules/@react-native-community/datetimepicker
+          @react-native-community/datetimepicker@"8.3.0" from the root project
+        peer expo@"*" from @expo/dom-webview@0.1.4
+        node_modules/@expo/dom-webview
+          peerOptional @expo/dom-webview@"*" from expo@52.0.46
+    peer react-native@"*" from react-native-webview@13.13.5
+    node_modules/react-native-webview
+      peerOptional react-native-webview@"*" from expo@52.0.46
+      node_modules/expo
+        expo@"~52.0.38" from the root project
+        peerOptional expo@">=50.0.0" from @react-native-community/datetimepicker@8.3.0
+        node_modules/@react-native-community/datetimepicker
+          @react-native-community/datetimepicker@"8.3.0" from the root project
+        peer expo@"*" from @expo/dom-webview@0.1.4
+        node_modules/@expo/dom-webview
+          peerOptional @expo/dom-webview@"*" from expo@52.0.46
+
+Fix the upstream dependency conflict, or retry
+this command with --force or --legacy-peer-deps
+to accept an incorrect (and potentially broken) dependency resolution.

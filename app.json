@@ -1,0 +1,36 @@
+{
+  "expo": {
+    "name": "HangAR",
+    "slug": "HangAR",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "light",
+    "splash": {
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
+    "ios": {
+      "supportsTablet": true
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#ffffff"
+      },
+      "package": "com.landria.HangAR"
+    },
+    "web": {
+      "favicon": "./assets/favicon.png"
+    },
+    "plugins": [
+      "expo-localization"
+    ],
+    "newArchEnabled": true,
+    "extra": {
+      "eas": {
+        "projectId": "f5f13f7f-8d0f-476f-b15d-05b1f8e3d233"
+      }
+    }
+  }
+}

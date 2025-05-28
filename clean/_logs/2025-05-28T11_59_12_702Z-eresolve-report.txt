@@ -1,0 +1,41 @@
+'Log files:
+E:\HANGAR\HANGAR\HangAR\clean\_logs\2025-05-28T11_59_12_702Z-debug-0.log
+
+# npm resolution error report
+
+While resolving: @react-native-community/datetimepicker@8.3.0
+Found: expo@48.0.21
+node_modules/expo
+  expo@"^48.0.0" from the root project
+  peer expo@"*" from expo-font@13.3.1
+  node_modules/expo-font
+    peer expo-font@"*" from @expo/vector-icons@14.1.0
+    node_modules/@expo/vector-icons
+      @expo/vector-icons@"^14.1.0" from the root project
+  peerOptional expo@">=47.0.0" from @react-native-firebase/app@17.5.0
+  node_modules/@react-native-firebase/app
+    @react-native-firebase/app@"^17.3.0" from the root project
+    peer @react-native-firebase/app@"17.5.0" from @react-native-firebase/messaging@17.5.0
+    node_modules/@react-native-firebase/messaging
+      @react-native-firebase/messaging@"^17.3.0" from the root project
+  peer expo@"*" from expo-localization@16.1.5
+  node_modules/expo-localization
+    expo-localization@"^16.1.5" from the root project
+  peer expo@"*" from expo-notifications@0.24.2
+  node_modules/expo-notifications
+    expo-notifications@"^0.24.0" from the root project
+
+Could not resolve dependency:
+peerOptional expo@">=50.0.0" from @react-native-community/datetimepicker@8.3.0
+node_modules/@react-native-community/datetimepicker
+  @react-native-community/datetimepicker@"8.3.0" from the root project
+
+Conflicting peer dependency: expo@53.0.9
+node_modules/expo
+  peerOptional expo@">=50.0.0" from @react-native-community/datetimepicker@8.3.0
+  node_modules/@react-native-community/datetimepicker
+    @react-native-community/datetimepicker@"8.3.0" from the root project
+
+Fix the upstream dependency conflict, or retry
+this command with --force or --legacy-peer-deps
+to accept an incorrect (and potentially broken) dependency resolution.

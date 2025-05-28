@@ -1,0 +1,18 @@
+'Log files:
+E:\HANGAR\HANGAR\HangAR\clean\_logs\2025-05-23T09_51_12_747Z-debug-0.log
+
+# npm resolution error report
+
+While resolving: hangar@1.0.0
+Found: react-native-svg@15.11.2
+node_modules/react-native-svg
+  react-native-svg@"15.11.2" from the root project
+
+Could not resolve dependency:
+peer react-native-svg@"^6.2.1||^7.0.3" from react-native-svg-charts@5.4.0
+node_modules/react-native-svg-charts
+  react-native-svg-charts@"*" from the root project
+
+Fix the upstream dependency conflict, or retry
+this command with --force or --legacy-peer-deps
+to accept an incorrect (and potentially broken) dependency resolution.
