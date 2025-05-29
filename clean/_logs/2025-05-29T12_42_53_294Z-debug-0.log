@@ -1,0 +1,19 @@
+0 verbose cli C:\Program Files\nodejs\node.exe C:\Users\Ranto Liantsoa\AppData\Roaming\npm\node_modules\npm\bin\npm-cli.js
+1 info using npm@11.4.1
+2 info using node@v20.17.0
+3 silly config load:file:C:\Users\Ranto Liantsoa\AppData\Roaming\npm\node_modules\npm\npmrc
+4 silly config load:file:E:\HANGAR\HANGAR\HangAR\.npmrc
+5 silly config load:file:C:\Users\Ranto Liantsoa\.npmrc
+6 silly config load:file:C:\Users\Ranto Liantsoa\AppData\Roaming\npm\etc\npmrc
+7 verbose title npm exec expo install --check
+8 verbose argv "exec" "--" "expo" "install" "--check"
+9 verbose logfile logs-max:10 dir:E:\HANGAR\HANGAR\HangAR\clean\_logs\2025-05-29T12_42_53_294Z-
+10 verbose logfile E:\HANGAR\HANGAR\HangAR\clean\_logs\2025-05-29T12_42_53_294Z-debug-0.log
+11 silly logfile start cleaning logs, removing 3 files
+12 silly logfile done cleaning log files
+13 verbose cwd E:\HANGAR\HANGAR\HangAR
+14 verbose os Windows_NT 10.0.26100
+15 verbose node v20.17.0
+16 verbose npm  v11.4.1
+17 verbose exit 0
+18 info ok

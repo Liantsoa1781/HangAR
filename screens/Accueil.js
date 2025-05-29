@@ -5,42 +5,9 @@ import Paragraph from '../components/Paragraph';
 import Boutton from '../components/Button';
 import Logo from '../components/Logo';
 
-import messaging from '@react-native-firebase/messaging';
-import { useEffect } from 'react';
-
 function Accueil({ navigation }) {
   const bienvenu = "Bienvenu sur votre espace Hang'AR";
   const footer = "Cette application n'est utilisable que par les abonnés de Hang'AR";
-
-  useEffect(() => {
-    // Quand app est ouverte et notification cliquée
-    const unsubscribe = messaging().onNotificationOpenedApp(remoteMessage => {
-      if (remoteMessage?.data?.reservationId) {
-        navigation.navigate('Reservation', { id: remoteMessage.data.reservationId });
-      }
-    });
-
-    // Quand app est fermée, notification cliquée → récupération
-    messaging()
-      .getInitialNotification()
-      .then(remoteMessage => {
-        if (remoteMessage?.data?.reservationId) {
-          navigation.navigate('Reservation', { id: remoteMessage.data.reservationId });
-        }
-      });
-
-    return unsubscribe;
-  }, []);
-
-  useEffect(() => {
-    const unsubscribeForeground = messaging().onMessage(async remoteMessage => {
-      console.log('Notification reçue en foreground:', remoteMessage);
-      // Optionnel : afficher une alerte ou stocker l'info
-      alert(remoteMessage.notification.title + '\n' + remoteMessage.notification.body);
-    });
-  
-    return unsubscribeForeground;
-  }, []);
 
   return (
     <View style={styles.container}>

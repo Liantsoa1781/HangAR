@@ -1,0 +1,26 @@
+0 verbose cli C:\Program Files\nodejs\node.exe C:\Users\Ranto Liantsoa\AppData\Roaming\npm\node_modules\npm\bin\npm-cli.js
+1 info using npm@11.4.1
+2 info using node@v20.17.0
+3 silly config load:file:C:\Users\Ranto Liantsoa\AppData\Roaming\npm\node_modules\npm\npmrc
+4 silly config load:file:E:\HANGAR\HANGAR\HangAR\.npmrc
+5 silly config load:file:C:\Users\Ranto Liantsoa\.npmrc
+6 silly config load:file:C:\Users\Ranto Liantsoa\AppData\Roaming\npm\etc\npmrc
+7 verbose title npm explain expo-cli
+8 verbose argv "explain" "expo-cli" "--json"
+9 verbose logfile logs-max:10 dir:E:\HANGAR\HANGAR\HangAR\clean\_logs\2025-05-29T12_42_53_210Z-
+10 verbose logfile E:\HANGAR\HANGAR\HangAR\clean\_logs\2025-05-29T12_42_53_210Z-debug-0.log
+11 silly logfile start cleaning logs, removing 3 files
+12 silly packumentCache heap:2197815296 maxSize:549453824 maxEntrySize:274726912
+13 silly logfile done cleaning log files
+14 verbose stack Error: No dependencies found matching expo-cli
+14 verbose stack     at Explain.exec (C:\Users\Ranto Liantsoa\AppData\Roaming\npm\node_modules\npm\lib\commands\explain.js:58:13)
+14 verbose stack     at async Npm.exec (C:\Users\Ranto Liantsoa\AppData\Roaming\npm\node_modules\npm\lib\npm.js:208:9)
+14 verbose stack     at async module.exports (C:\Users\Ranto Liantsoa\AppData\Roaming\npm\node_modules\npm\lib\cli\entry.js:67:5)
+15 error No dependencies found matching expo-cli
+16 verbose cwd E:\HANGAR\HANGAR\HangAR
+17 verbose os Windows_NT 10.0.26100
+18 verbose node v20.17.0
+19 verbose npm  v11.4.1
+20 verbose exit 1
+21 verbose code 1
+22 error A complete log of this run can be found in: E:\HANGAR\HANGAR\HangAR\clean\_logs\2025-05-29T12_42_53_210Z-debug-0.log

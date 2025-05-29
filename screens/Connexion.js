@@ -15,7 +15,7 @@ import Checkbox from 'expo-checkbox';
 import { theme } from '../core/theme';
 import { passwordValidator } from '../helpers/passwordValidator';
 
-import registerPushNotificationsAsync from './registerPushNotificationsAsync';
+// import registerPushNotificationsAsync from './registerPushNotificationsAsync';
 import { useUser } from './UserContext';
 
 function Connexion({ navigation }) {
@@ -102,13 +102,13 @@ function Connexion({ navigation }) {
       }
 
       if (status === 'admin') {
-        await registerPushNotificationsAsync(id);
+        // await registerPushNotificationsAsync(id);
         navigation.reset({
           index: 0,
           routes: [{ name: 'ListeAbonnes' }],
         });
       } else if (status === 'client') {
-        await registerPushNotificationsAsync(id);
+        // await registerPushNotificationsAsync(id);
         navigation.reset({
           index: 0,
           routes: [

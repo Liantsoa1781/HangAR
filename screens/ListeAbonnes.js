@@ -112,9 +112,15 @@
     );    
 
     const sortedSubscriptions = [...subscriptions].sort((a, b) => {
-      const dateA = sortBy === 'startDate' ? a.dateAbonnement : a.dateExpiration;
-      const dateB = sortBy === 'startDate' ? b.dateAbonnement : b.dateExpiration;
-      return sortOrder === 'asc' ? dateA - dateB : dateB - dateA;
+      if (sortBy === 'name') {
+        const nameA = normalizeString(a.nomClient + a.prenomClient);
+        const nameB = normalizeString(b.nomClient + b.prenomClient);
+        return sortOrder === 'asc' ? nameA.localeCompare(nameB) : nameB.localeCompare(nameA);
+      } else {
+        const dateA = sortBy === 'startDate' ? a.dateAbonnement : a.dateExpiration;
+        const dateB = sortBy === 'startDate' ? b.dateAbonnement : b.dateExpiration;
+        return sortOrder === 'asc' ? dateA - dateB : dateB - dateA;
+      }
     });
 
     useEffect(() => {
@@ -131,6 +137,7 @@
         normalizeString(item.numeroDeCompte),
         item.nomClient,
         item.prenomClient,
+        item.nomClient + item.prenomClient
       ];
     
       return fields.some(field =>
@@ -158,158 +165,173 @@
 
     return (
       <SafeAreaView style={{ flex: 1, backgroundColor: '#fff' }}>
-      <KeyboardAvoidingView
-        style={{ flex: 1 }}
-        behavior={Platform.OS === 'ios' ? 'padding' : undefined}
-      >
-    <View style={{ flex: 1, backgroundColor: '#fff' }}>
-      <View style={styles.container}>
-        {/* Icons header */}
-        {isMenuVisible && (
-            <HamburgerMenu links={links} navigation={navigation} onClose={toggleMenu} />
-          )}
-        <View style={styles.header}>
-          <TouchableOpacity onPress={toggleMenu} style={styles.iconButton}>
-            <Entypo name="menu" size={30} color="black" />
-          </TouchableOpacity>
+       <KeyboardAvoidingView style={{ flex: 1 }} behavior={Platform.OS === 'ios' ? 'padding' : undefined}>
+        <View style={{ flex: 1, backgroundColor: '#fff' }}>
+          <View style={styles.container}>
+   
+            {/* {isMenuVisible && (
+                <HamburgerMenu links={links} navigation={navigation} onClose={toggleMenu} />
+            )} */}
+            <View style={styles.header}>
+                <TouchableOpacity onPress={toggleMenu} style={styles.iconButton}>
+                  <Entypo name="menu" size={30} color="black" />
+                </TouchableOpacity>
 
-          <View style={{ flex: 1 }} /> {/* Pour pousser l'icône à droite */}
+                <View style={{ flex: 1 }} />
 
-          {/* Icône de profil */}
-            <TouchableOpacity onPress={() => setShowProfile(prev => !prev)} style={styles.iconButton}>
-              <Ionicons name="person-circle-outline" size={33} color="black" />
-            </TouchableOpacity>
+                <TouchableOpacity onPress={() => setShowProfile(prev => !prev)} style={styles.iconButton}>
+                  <Ionicons name="person-circle-outline" size={33} color="black" />
+                </TouchableOpacity> 
 
-          <TouchableOpacity onPress={toggleFilters} style={styles.iconButton}>
-            <Entypo name="dots-three-horizontal" size={24} color="black" />
-          </TouchableOpacity>
-        </View>
-
-        <Text style={styles.title}>Liste des Abonnés</Text>
-        <TextInput
-          style={styles.input}
-          placeholder="Rechercher..."
-          value={searchQuery}
-          onChangeText={setSearchQuery}
-        />
-
-        {showFilters && (
-          <View style={styles.filterMenuContainer}>
-            <Text style={styles.sortLabel}>Trier par :</Text>
-            <TouchableOpacity style={styles.sortButton} onPress={toggleSortByName}>
-              <Text style={styles.sortButtonText}>🔤 Nom (A → Z / Z → A)</Text>
-            </TouchableOpacity>
-
-            <Text style={styles.sortLabel}>Filtrer par statut :</Text>
-            <DropDownPicker
-              open={open}
-              value={value}
-              items={items}
-              setOpen={setOpen}
-              setValue={(callback) => {
-                const selected = callback(value);
-                setValue(selected);
-                handleStatusChange(selected);
-              }}
-              setItems={setItems}
-              style={{ marginBottom: open ? 120 : 10 }}
-              placeholder="Filtrer par statut"
-              dropDownDirection="BOTTOM"
-              zIndex={1000}
-              zIndexInverse={1000}
-            />
-          </View>
-        )}
-
-          {showProfile && (
-            <View style={styles.profileCard}>
-              <Text style={styles.profileTitle}>👤 {user.prenom} </Text>
-              <Text>Statut : {user.status}</Text>
-            
-              <TouchableOpacity
-                style={styles.logoutButton}
-                onPress={() => {
-                  Alert.alert(
-                    'Déconnexion',
-                    'Voulez-vous vraiment vous déconnecter ?',
-                    [
-                      { text: 'Annuler', style: 'cancel' },
-                      {
-                        text: 'Oui',
-                        onPress: () => {
-                          setUser(null);
-                          setShowProfile(false);
-                          navigation.reset({ index: 0, routes: [{ name: 'Accueil' }] });
-                        },
-                      },
-                    ],
-                    { cancelable: true }
-                  );
-                }}
-              >
-                <Text style={{ color: 'white' }}>Déconnexion</Text>
-              </TouchableOpacity>
+                <TouchableOpacity onPress={toggleFilters} style={styles.iconButton}>
+                  <Entypo name="dots-three-horizontal" size={24} color="black" />
+                </TouchableOpacity>
             </View>
-          )}
 
-        {loading ? (
-          <ActivityIndicator size="large" color={theme.colors.primary} />
-        ) : (
-          <ScrollView horizontal>
-            <View>
-              <View style={styles.tableHeader}>
-                <Text style={styles.tableHeaderText}>Numero de compte</Text>
-                <Text style={styles.tableHeaderText}>Nom</Text>
+            <Text style={styles.title}>Liste des Abonnés</Text>
+            <TextInput
+              style={styles.input}
+              placeholder="Rechercher..."
+              value={searchQuery}
+              onChangeText={setSearchQuery}
+            />
+
+            {showFilters && (
+              <View style={styles.filterMenuContainer}>
+                <Text style={styles.sortLabel}>Trier par :</Text>
+                <TouchableOpacity style={styles.sortButton} onPress={toggleSortByName}>
+                  <Text style={styles.sortButtonText}>
+                    🔤 Nom (A {'\u2192'} Z / Z {'\u2192'} A)
+                  </Text>
+                </TouchableOpacity>
+
+                <Text style={styles.sortLabel}>Filtrer par statut :</Text>
+                <DropDownPicker
+                  open={open}
+                  value={value}
+                  items={items}
+                  setOpen={setOpen}
+                  setValue={(callback) => {
+                    const selected = callback(value);
+                    setValue(selected);
+                    handleStatusChange(selected);
+                  }}
+                  setItems={setItems}
+                  style={{ marginBottom: open ? 120 : 10 }}
+                  placeholder="Filtrer par statut"
+                  dropDownDirection="BOTTOM"
+                  zIndex={1000}
+                  zIndexInverse={1000}
+                />
               </View>
+            )}
 
-              <FlatList
-                ref={flatListRef}
-                data={filteredSubscriptions}
-                keyExtractor={(item) => item.id}
-                renderItem={({ item }) => (
-                  <View style={styles.tableRow}>
-                    <TouchableOpacity
-                      style={styles.tableCell}
-                      onPress={() => navigation.navigate('DetailsAbonnement', { numeroDeCompte: item.numeroDeCompte })}
-                    >
-                      <Text style={{ color: theme.colors.primary, textDecorationLine: 'underline'}}>
-                        {item.numeroDeCompte}
-                      </Text>
-                    </TouchableOpacity>
-                    <Text style={styles.tableCell}>{item.nomClient} {item.prenomClient}</Text>
-                  </View>
-                )}
-                getItemLayout={(data, index) => ({
-                  length: 60, // hauteur approximative d'un item (ajuste si nécessaire)
-                  offset: 60 * index,
-                  index,
-                })}
-              />
-
-
-            <View style={{ flexDirection: 'row', justifyContent: 'center', marginTop: 10, flexWrap: 'wrap' }}>
-              {Array.from({ length: totalPages }, (_, index) => (
+            {showProfile && (
+              <View style={styles.profileCard}>
+                <Text style={styles.profileTitle}>👤 {user?.prenom || ''}</Text>
+                <Text>Statut : {user.status}</Text>
+              
                 <TouchableOpacity
-                  key={index}
-                  onPress={() => setCurrentPage(index + 1)}
-                  style={{
-                    padding: 8,
-                    margin: 4,
-                    backgroundColor: currentPage === index + 1 ? theme.colors.primary : '#ccc',
-                    borderRadius: 5,
+                  style={styles.logoutButton}
+                  onPress={() => {
+                    Alert.alert(
+                      'Déconnexion',
+                      'Voulez-vous vraiment vous déconnecter ?',
+                      [
+                        { text: 'Annuler', style: 'cancel' },
+                        {
+                          text: 'Oui',
+                          onPress: () => {
+                            setUser(null);
+                            setShowProfile(false);
+                            navigation.reset({ index: 0, routes: [{ name: 'Accueil' }] });
+                          },
+                        },
+                      ],
+                      { cancelable: true }
+                    );
                   }}
                 >
-                  <Text style={{ color: '#fff' }}>{index + 1}</Text>
+                  <Text style={{ color: 'white' }}>Déconnexion</Text>
                 </TouchableOpacity>
-              ))}
-            </View>
+              </View>
+            )}
 
-            </View>
-          </ScrollView>
-        )}
+            {loading ? (
+              <ActivityIndicator size="large" color={theme.colors.primary} />
+            ) : (
+              <ScrollView horizontal>
+                <View>
+                  <View style={styles.tableHeader}>
+                    <Text style={styles.tableHeaderText}>Numero de compte</Text>
+                    <Text style={styles.tableHeaderText}>Nom</Text>
+                  </View>
+
+                  <FlatList
+                    ref={flatListRef}
+                    data={paginatedSubscriptions}
+                    keyExtractor={(item) => item.id}
+                    renderItem={({ item }) => (
+                      <View style={styles.tableRow}>
+                        <TouchableOpacity
+                          style={styles.tableCell}
+                          onPress={() => navigation.navigate('DetailsAbonnement', { numeroDeCompte: item.numeroDeCompte })}
+                        >
+                          <Text style={{ color: theme.colors.primary, textDecorationLine: 'underline'}}>
+                            {item.numeroDeCompte}
+                          </Text>
+                        </TouchableOpacity>
+                        <Text style={styles.tableCell}>{(item.nomClient || '') + ' ' + (item.prenomClient || '')}</Text>
+                      </View>
+                    )}
+                    getItemLayout={(data, index) => ({
+                      length: 60, // hauteur approximative d'un item (ajuste si nécessaire)
+                      offset: 60 * index,
+                      index,
+                    })}
+                  />
+
+                  <View style={styles.pagination}>
+                    <TouchableOpacity
+                      disabled={currentPage === 1}
+                      onPress={() => setCurrentPage(currentPage - 1)}
+                    >
+                      <Text style={styles.pageButton}>←</Text>
+                    </TouchableOpacity>
+
+                    <Text style={styles.pageIndicator}>{currentPage} / {totalPages}</Text>
+
+                    <TouchableOpacity
+                      disabled={currentPage === totalPages}
+                      onPress={() => setCurrentPage(currentPage + 1)}
+                    >
+                      <Text style={styles.pageButton}>→</Text>
+                    </TouchableOpacity>
+                  </View>
+
+
+                  <View style={{ flexDirection: 'row', justifyContent: 'center', marginTop: 10, flexWrap: 'wrap' }}>
+                    {Array.from({ length: totalPages }, (_, index) => (
+                      <TouchableOpacity
+                        key={index}
+                        onPress={() => setCurrentPage(index + 1)}
+                        style={{
+                          padding: 8,
+                          margin: 4,
+                          backgroundColor: currentPage === index + 1 ? theme.colors.primary : '#ccc',
+                          borderRadius: 5,
+                        }}
+                      >
+                        <Text style={{ color: '#fff' }}>{index + 1}</Text>
+                      </TouchableOpacity>
+                    ))}
+                  </View>
+                </View>
+              </ScrollView>
+            )}
+        </View>
       </View>
-      </View>
-  </KeyboardAvoidingView>
+    </KeyboardAvoidingView>
   </SafeAreaView>
     );
   };
@@ -424,7 +446,21 @@
       backgroundColor: 'red',
       borderRadius: 5,
       alignItems: 'center',
-    }
+    },pagination: {
+      flexDirection: 'row',
+      justifyContent: 'center',
+      alignItems: 'center',
+      marginVertical: 10,
+    },
+    pageButton: {
+      fontSize: 20,
+      marginHorizontal: 15,
+      color: theme.colors.primary,
+    },
+    pageIndicator: {
+      fontSize: 16,
+    },
+    
     
   });
 

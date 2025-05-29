@@ -32,23 +32,21 @@ export default function Dashboard({ navigation , route }) {
     <SafeAreaView style={{ flex: 1, backgroundColor: '#fff' }}>
 
     <View style= {styles.container}>
-      {isMenuVisible && (
+      {/* {isMenuVisible && (
         <View>
           <HamburgerMenu links={links} navigation={navigation} onClose={toggleMenu} />
         </View>
-        )}
+        )} */}
           <View style={styles.header}>
             <TouchableOpacity onPress={toggleMenu} style={styles.iconButton}>
               <Entypo name="menu" size={30} color="black" />
             </TouchableOpacity>
 
-            <View style={{ flex: 1 }} /> {/* Pour pousser l'icône à droite */}
 
-            {/* Icône de profil */}
             <TouchableOpacity onPress={() => setShowProfile(prev => !prev)} style={styles.iconButton}>
               <Ionicons name="person-circle-outline" size={33} color="black" />
             </TouchableOpacity>
-        </View>
+          </View>
 
           {showProfile && (
           <View style={styles.profileCard}>
@@ -79,7 +77,7 @@ export default function Dashboard({ navigation , route }) {
               <Text style={{ color: 'white' }}>Déconnexion</Text>
            </TouchableOpacity>
           </View>
-        )}
+          )}
 
       <View style= {styles.logoContainer}>
         <Logo style={ styles.logo }/>

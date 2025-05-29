@@ -2,6 +2,9 @@
 
 # dependencies
 node_modules/
+android/.gradle
+android/app/build.expo/
+*.log/
 
 # Expo
 .expo/
